@@ -20,10 +20,12 @@ describe('todo_app', function(){
     expect(ctrl.taskList).toEqual(['clean yard', 'buy groceries']);
   });
 
-  xit('allows user to mark tasks as done', function(){
+  it('allows user to mark tasks as done', function(){
 
     ctrl.addTask('clean yard');
     ctrl.addTask('buy groceries');
+
+    expect(ctrl.taskList).toEqual(['clean yard', 'buy groceries']);
 
     ctrl.deleteTask('clean yard');
 
