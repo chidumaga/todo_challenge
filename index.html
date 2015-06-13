@@ -2,9 +2,22 @@
 
 <html lang="en" ng-app="todo">
   <head>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/todoController.js"></script>
   </head>
 
-  <body ng-controller="todo">
+  <body ng-controller="todo as todo">
+    <form>
+      <input type="text" ng-model="todo.taskToAdd">
+      <button class="btn" ng-click="todo.addTask(todo.taskToAdd)">add task</button>
+    </form>
+
+    <ul class="task-list" ng-repeat="task in todo.taskList">
+      <li>{{task}}</li>
+    </ul>
+
   </body>
 
 </html>
