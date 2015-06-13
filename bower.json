@@ -1,0 +1,24 @@
+{
+  "name": "todo_challenge",
+  "version": "0.0.0",
+  "homepage": "https://github.com/chidumaga/todo_challenge",
+  "authors": [
+    "Chidumaga <chidumaga@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-resource": "~1.4.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.0",
+    "angular-route": "~1.4.0"
+  }
+}
