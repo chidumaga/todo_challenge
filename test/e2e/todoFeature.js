@@ -1,6 +1,7 @@
 describe('todoApp', function(){
 
-  var searchBox = element(by.model('todo.taskToAdd'))
+  var inputTask = element(by.model('todo.taskToAdd'));
+  var addTask = element(by.className('btn'));
 
   beforeEach(function(){
     browser.get('http://localhost:8080');
@@ -8,17 +9,30 @@ describe('todoApp', function(){
 
   it('has a text box for adding tasks', function(){
 
-    expect(searchBox).toBeDefined();
+    expect(inputTask).toBeDefined();
 
   });
 
-  it('can allow users add tasks', function(){
+  it('allow users add tasks', function(){
 
-    searchBox.sendKeys('feed the horse');
-    element(by.className('btn')).click();
+    inputTask.sendKeys('feed the horse');
+    addTask.click();
 
-    expect(element(by.binding('task')).getText()).toEqual('feed the horse');
+    var child = element(by.css('.done-false')).
+    element(by.repeater('todo.task'));
 
-  })
+    expect(child.getText()).toEqual('feed the horse');
+  });
+
+  it('allows users mark tasks as done', function(){
+
+    inputTask.sendKeys('drown the fish');
+    addTask.click();
+
+    element(by.className('chbx')).click();
+
+    expect(element(by.css('.done-true'))).toBeTruthy();
+
+  });
 
 })

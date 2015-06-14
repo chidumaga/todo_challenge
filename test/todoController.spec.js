@@ -17,19 +17,8 @@ describe('todo_app', function(){
     ctrl.addTask('clean yard');
     ctrl.addTask('buy groceries');
 
-    expect(ctrl.taskList).toEqual(['clean yard', 'buy groceries']);
-  });
-
-  it('allows user to mark tasks as done', function(){
-
-    ctrl.addTask('clean yard');
-    ctrl.addTask('buy groceries');
-
-    expect(ctrl.taskList).toEqual(['clean yard', 'buy groceries']);
-
-    ctrl.deleteTask('clean yard');
-
-    expect(ctrl.taskList).toEqual(['buy groceries']);
+    expect(ctrl.taskList[0].task).toEqual('clean yard');
+    expect(ctrl.taskList[1].task).toEqual('buy groceries');
   });
 
 })
