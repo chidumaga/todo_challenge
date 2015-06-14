@@ -16,9 +16,12 @@
     "phantomjs": "^1.9.17",
     "protractor": "^2.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "karma": "^0.12.36"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start test/karma.conf.js",
+    "start": "protractor test/e2e/conf.js"
   },
   "repository": {
     "type": "git",
