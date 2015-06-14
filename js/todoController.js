@@ -15,4 +15,23 @@ todoApp.controller('todo', [function(){
     self.count -= 1;
   }
 
+  self.clearCompletedTasks = function(task){
+
+    var index = -1
+
+    for(var i=0; i<self.taskList.length; i++){
+      if (self.taskList[i].done === true ){
+        index = i;
+        self.taskList.splice(index, 1);
+        self.count -= 1;
+      }
+    }
+  }
+
+  self.submitForm = function(){
+   var form = document.getElementsByName('myForm')[0];
+   form.reset();
+   return false;
+  }
+
 }]);

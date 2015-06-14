@@ -24,20 +24,22 @@
       <a href="#" id="completed" ng-click="myFilter = {done: true}">Completed</a>
     </div>
 
-    <form>
+    <form name="myForm" ng-submit="todo.submitForm()">
       <input type="text" ng-model="todo.taskToAdd">
-      <button class="btn" ng-click="todo.addTask(todo.taskToAdd)">add task</button>
+      <button class="addBtn" ng-click="todo.addTask(todo.taskToAdd)">add task</button>
     </form>
 
     <ul class="task-list" ng-repeat="todo in todo.taskList | filter: myFilter">
       <li>
-        <input type="checkbox" ng-model="todo.done" ng-click="todo.markAsDone()" class="chbx">
+        <input type="checkbox" ng-model="todo.done" ng-change="todo.markAsDone()" class="chbx">
         <span class="done-{{todo.done}}">{{todo.task}}</span>
       </li>
     </ul>
 
     <p>Task count: {{todo.count}} </p>
     <p>Completed tasks: {{todo.completedCount}}</p>
+
+    <button class="clearBtn" ng-click="todo.clearCompletedTasks()"> Clear completed tasks </button>
 
   </body>
 

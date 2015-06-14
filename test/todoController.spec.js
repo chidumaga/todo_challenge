@@ -37,6 +37,18 @@ describe('todo_app', function(){
     ctrl.markAsDone();
 
     expect(ctrl.completedCount).toEqual(1);
+  });
+
+  it('allows users clear completed tasks', function(){
+
+    ctrl.addTask('clean yard');
+    ctrl.addTask('buy groceries');
+
+    ctrl.taskList[0].done = true; //user cleaned yard
+
+    ctrl.clearCompletedTasks();
+
+    expect(ctrl.taskList.length).toEqual(1);
   })
 
 })

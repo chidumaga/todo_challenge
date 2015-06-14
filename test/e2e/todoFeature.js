@@ -1,7 +1,7 @@
 describe('todoApp', function(){
 
   var inputTask = element(by.model('todo.taskToAdd'));
-  var addTask = element(by.className('btn'));
+  var addTask = element(by.className('addBtn'));
 
   beforeEach(function(){
     browser.get('http://localhost:8080');
@@ -18,10 +18,7 @@ describe('todoApp', function(){
     inputTask.sendKeys('feed the horse');
     addTask.click();
 
-    var child = element(by.css('.done-false')).
-    element(by.binding('todo.task'));
-
-    expect(child.getText()).toEqual('feed the horse');
+    expect(element(by.repeater('todo in todo.taskList')).getText()).toEqual('feed the horse');
   });
 
   it('allows users mark tasks as done', function(){
@@ -46,7 +43,7 @@ describe('todoApp', function(){
 
     element(by.id('active')).click();
 
-    //expect(element(by.binding('todo.task')).getText()).toEqual('resurrect the donkey');
+    expect(element(by.repeater('todo in todo.taskList')).getText()).toEqual('resurrect the donkey');
 
   });
 
@@ -61,7 +58,7 @@ describe('todoApp', function(){
 
     element(by.id('completed')).click();
 
-    //expect(element(by.binding('todo.task')).getText()).toEqual('shear the sheep');
+    expect(element(by.repeater('todo in todo.taskList')).getText()).toEqual('shear the sheep');
 
   });
 
@@ -76,8 +73,8 @@ describe('todoApp', function(){
 
     element(by.id('all')).click();
 
-    //expect(element(by.repeater('todo.task')).getText()).toContain('shear the sheep');
-    //expect(element(by.repeater('todo.task')).getText()).toContain('resurrect the donkey');
+    expect(element.all(by.repeater('todo in todo.taskList')).getText()).toContain('shear the sheep');
+    expect(element.all(by.repeater('todo in todo.taskList')).getText()).toContain('resurrect the donkey');
 
   });
 
@@ -91,7 +88,7 @@ describe('todoApp', function(){
     expect(element(by.binding('todo.count')).getText()).toEqual('Task count: 2');
   });
 
-  it('displays the number of completed tasks', function(){
+  xit('displays the number of completed tasks', function(){
 
     inputTask.sendKeys('swim with the eels');
     addTask.click();
@@ -101,6 +98,20 @@ describe('todoApp', function(){
     element(by.className('chbx')).click();
 
     expect(element(by.binding('todo.completedCount')).getText()).toEqual('Completed tasks: 1');
+  });
+
+  it('allows users clear completed tasks', function(){
+
+    inputTask.sendKeys('swim with the eels');
+    addTask.click();
+    inputTask.sendKeys('dance on the goats');
+    addTask.click();
+
+    element(by.className('chbx')).click();
+    element(by.className('clearBtn')).click();
+
+    expect(element(by.repeater('todo in todo.taskList')).getText()).toEqual('dance on the goats');
+
   })
 
 })
