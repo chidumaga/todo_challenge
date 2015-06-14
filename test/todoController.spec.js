@@ -21,4 +21,22 @@ describe('todo_app', function(){
     expect(ctrl.taskList[1].task).toEqual('buy groceries');
   });
 
+  it('maintains a count of the list of tasks', function(){
+
+    ctrl.addTask('clean yard');
+    ctrl.addTask('buy groceries');
+
+    expect(ctrl.count).toEqual(2);
+  });
+
+  it('maintains a list of completed tasks', function(){
+
+    ctrl.addTask('clean yard');
+    ctrl.addTask('buy groceries');
+
+    ctrl.markAsDone();
+
+    expect(ctrl.completedCount).toEqual(1);
+  })
+
 })
