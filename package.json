@@ -20,7 +20,7 @@
     "karma": "^0.12.36"
   },
   "scripts": {
-    "test": "karma start test/karma.conf.js",
+    "test": "karma start test/karma.conf.js && ",
     "start": "protractor test/e2e/conf.js"
   },
   "repository": {
